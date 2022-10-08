@@ -10,6 +10,7 @@ auto encryptor(std::unordered_map<std::string, int> &files, std::map<char, int> 
     std::cout << '\n';
 
     for (auto &entry : files) {
+        std::cout << entry.first << std::endl;
         std::ifstream read(entry.first);
 
         if (!read.is_open()) std::cerr << "[-] Could not open the file - '" << entry.first << "'" << std::endl;
@@ -22,7 +23,6 @@ auto encryptor(std::unordered_map<std::string, int> &files, std::map<char, int> 
                 for (auto const &it : encryption) {
                     if (it.first == byte) {
                         encrypt << it.second;
-                        std::cout << "shit" << std::endl;
                     }
                 }
                 encrypt << '\n';
@@ -41,7 +41,7 @@ auto main() -> int {
 
     for (std::filesystem::recursive_directory_iterator i("/home/draco/TobeEncrypted"), end; i != end; ++i) {
         if (!is_directory(i->path()))
-            files[i->path().filename()];
+            files[i->path()];
     }
 
     int count = 0;
