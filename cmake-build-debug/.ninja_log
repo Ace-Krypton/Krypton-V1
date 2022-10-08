@@ -1,9 +1,5 @@
 # ninja log v5
-0	1266	1665241586390688426	CMakeFiles/Krypton_Ransomware.dir/main.cpp.o	4a2acf5d56c605cb
-1268	1516	1665241586640688412	Krypton_Ransomware	239b76d5c3b53ac7
-1	855	1665245309953828617	CMakeFiles/Krypton_Ransomware.dir/main.cpp.o	4a2acf5d56c605cb
-856	951	1665245310050495279	Krypton_Ransomware	239b76d5c3b53ac7
-1	802	1665245696450475068	CMakeFiles/Krypton_Ransomware.dir/main.cpp.o	4a2acf5d56c605cb
-803	894	1665245696540475063	Krypton_Ransomware	239b76d5c3b53ac7
 0	830	1665245720680473811	CMakeFiles/Krypton_Ransomware.dir/main.cpp.o	4a2acf5d56c605cb
 830	924	1665245720773807139	Krypton_Ransomware	239b76d5c3b53ac7
+1	2443	1665247521297046873	CMakeFiles/Krypton_Ransomware.dir/main.cpp.o	7c951e74d2494f2d
+2443	2602	1665247521453713531	Krypton_Ransomware	239b76d5c3b53ac7

