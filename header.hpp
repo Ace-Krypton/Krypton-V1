@@ -8,7 +8,12 @@
 
 struct Encryptor {
 public:
-    static auto encryptor(std::unordered_map<std::string, int> &files, std::map<char, int> &encryption, char &byte) -> void;
+    static auto encryptor() -> void;
+};
+
+struct Decryptor {
+public:
+    static auto decryptor() -> void;
 };
 
 #endif

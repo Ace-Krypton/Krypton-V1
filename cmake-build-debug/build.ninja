@@ -55,6 +55,18 @@ build CMakeFiles/Krypton_Ransomware.dir/encryptor.cpp.o: CXX_COMPILER__Krypton_R
   OBJECT_DIR = CMakeFiles/Krypton_Ransomware.dir
   OBJECT_FILE_DIR = CMakeFiles/Krypton_Ransomware.dir
 
+build CMakeFiles/Krypton_Ransomware.dir/decryptor.cpp.o: CXX_COMPILER__Krypton_Ransomware_Debug /home/draco/CLionProjects/Krypton-Ransomware/decryptor.cpp || cmake_object_order_depends_target_Krypton_Ransomware
+  DEP_FILE = CMakeFiles/Krypton_Ransomware.dir/decryptor.cpp.o.d
+  FLAGS = -g -std=gnu++20
+  OBJECT_DIR = CMakeFiles/Krypton_Ransomware.dir
+  OBJECT_FILE_DIR = CMakeFiles/Krypton_Ransomware.dir
+
+build CMakeFiles/Krypton_Ransomware.dir/main.cpp.o: CXX_COMPILER__Krypton_Ransomware_Debug /home/draco/CLionProjects/Krypton-Ransomware/main.cpp || cmake_object_order_depends_target_Krypton_Ransomware
+  DEP_FILE = CMakeFiles/Krypton_Ransomware.dir/main.cpp.o.d
+  FLAGS = -g -std=gnu++20
+  OBJECT_DIR = CMakeFiles/Krypton_Ransomware.dir
+  OBJECT_FILE_DIR = CMakeFiles/Krypton_Ransomware.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Krypton_Ransomware
@@ -63,7 +75,7 @@ build CMakeFiles/Krypton_Ransomware.dir/encryptor.cpp.o: CXX_COMPILER__Krypton_R
 #############################################
 # Link the executable Krypton_Ransomware
 
-build Krypton_Ransomware: CXX_EXECUTABLE_LINKER__Krypton_Ransomware_Debug CMakeFiles/Krypton_Ransomware.dir/encryptor.cpp.o
+build Krypton_Ransomware: CXX_EXECUTABLE_LINKER__Krypton_Ransomware_Debug CMakeFiles/Krypton_Ransomware.dir/encryptor.cpp.o CMakeFiles/Krypton_Ransomware.dir/decryptor.cpp.o CMakeFiles/Krypton_Ransomware.dir/main.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Krypton_Ransomware.dir
   POST_BUILD = :
