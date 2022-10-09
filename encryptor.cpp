@@ -21,7 +21,9 @@ auto Encryptor::encryptor() -> void {
     auto path = std::string("/home/draco/TobeEncrypted");
     char byte = 0;
 
-    std::string combinations = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+=[]{};:'\",./?,<~>`|\\1234567890";
+    std::string combinations =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+=[]{};: -><~'\",\n\t./?,<~>`|\\1234567890";
+
     unsigned seed = std::chrono::steady_clock::now().time_since_epoch().count();
     std::default_random_engine engine(seed);
     int key;
