@@ -3,13 +3,9 @@
 #include <filesystem>
 #include <fstream>
 #include <random>
-#include <map>
-#include <unordered_map>
 #include "header.hpp"
 
 auto Encryptor::encryptor() -> void {
-    std::unordered_map<std::string, int> files;
-
     for (std::filesystem::recursive_directory_iterator i("/home/draco/TobeEncrypted"), end; i != end; ++i) {
         if (!is_directory(i->path()))
             files[i->path()];
@@ -29,8 +25,6 @@ auto Encryptor::encryptor() -> void {
     unsigned seed = std::chrono::steady_clock::now().time_since_epoch().count();
     std::default_random_engine engine(seed);
     int key;
-
-    std::map<char, int> encryption;
 
     for (auto &combination : combinations) {
         std::uniform_int_distribution<int> keys(100000, 999999);
@@ -54,6 +48,7 @@ auto Encryptor::encryptor() -> void {
                 for (auto const &it : encryption) {
                     if (it.first == byte) {
                         encrypt << it.second;
+                        storage.emplace_back(it.second);
                     }
                 }
                 encrypt << '\n';
@@ -63,7 +58,6 @@ auto Encryptor::encryptor() -> void {
             ofs.open(entry.first, std::ofstream::out | std::ofstream::trunc);
             ofs.close();
         }
-
         std::cout << "[*] File(s) encrypted successfully\n" << std::endl;
     }
 }
