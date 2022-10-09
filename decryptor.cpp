@@ -3,8 +3,6 @@
 #include "header.hpp"
 
 auto Decryptor::decryptor() -> void {
-    char byte = 0;
-
     for (auto &entry : Encryptor::files) {
         std::cout << "[*] File(s) decrypted successfully\n" << std::endl;
         std::ifstream read(entry.first);
@@ -14,12 +12,10 @@ auto Decryptor::decryptor() -> void {
 
         auto decrypt = std::fstream(entry.first, std::ios::out | std::ios::app);
 
-        while (read.get(byte)) {
-            for (auto &element : Encryptor::storage) {
-                for (auto &encryptions : Encryptor::encryption) {
-                    if (element == encryptions.second) {
-                        decrypt << encryptions.first;
-                    }
+        for (auto &element : Encryptor::storage) {
+            for (auto &encryptions : Encryptor::encryption) {
+                if (element == encryptions.second) {
+                    decrypt << encryptions.first;
                 }
             }
 
@@ -27,6 +23,7 @@ auto Decryptor::decryptor() -> void {
             ofs.open(entry.first, std::ofstream::out | std::ofstream::trunc);
             ofs.close();
         }
+        decrypt << '\n';
         std::cout << "[*] File(s) decrypted successfully\n" << std::endl;
     }
 }
