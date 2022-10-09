@@ -6,6 +6,7 @@ auto Decryptor::decryptor() -> void {
     char byte = 0;
 
     for (auto &entry : Encryptor::files) {
+        std::cout << "[*] File(s) decrypted successfully\n" << std::endl;
         std::ifstream read(entry.first);
 
         if (!read.is_open()) std::cerr << "[-] Could not open the file - '" << entry.first << "'" << std::endl;

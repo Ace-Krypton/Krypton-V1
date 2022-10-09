@@ -7,6 +7,8 @@
 #include <vector>
 #include <map>
 
+auto main_menu() -> void;
+
 struct Encryptor {
 public:
     static auto encryptor() -> void;
