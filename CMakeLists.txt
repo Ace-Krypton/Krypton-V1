@@ -3,4 +3,4 @@ project(Krypton_Ransomware)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Krypton_Ransomware main.cpp)
+add_executable(Krypton_Ransomware encryptor.cpp)

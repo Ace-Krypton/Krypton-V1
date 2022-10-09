@@ -32,6 +32,7 @@ auto encryptor(std::unordered_map<std::string, int> &files, std::map<char, int> 
             ofs.open(entry.first, std::ofstream::out | std::ofstream::trunc);
             ofs.close();
         }
+
         std::cout << "[*] File(s) encrypted successfully\n" << std::endl;
     }
 }
