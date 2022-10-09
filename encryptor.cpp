@@ -5,8 +5,9 @@
 #include <random>
 #include <map>
 #include <unordered_map>
+#include "header.hpp"
 
-auto encryptor(std::unordered_map<std::string, int> &files, std::map<char, int> &encryption, char &byte) -> void {
+auto Encryptor::encryptor(std::unordered_map<std::string, int> &files, std::map<char, int> &encryption, char &byte) -> void {
     std::cout << '\n';
 
     for (auto &entry : files) {
@@ -68,5 +69,5 @@ auto main() -> int {
         encryption[combination] = key;
     }
 
-    encryptor(files, encryption, byte);
+    Encryptor::encryptor(files, encryption, byte);
 }
